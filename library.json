@@ -1,0 +1,27 @@
+{
+  "name": "StreamSpy",
+  "keywords": "debug,sniffer",
+  "description": "Provide a wrapper to any Stream that allows you to spy on the Read/Write to that Stream.",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/jeremypoulter/StreamSpy.git"
+  },
+  "authors":
+  [
+    {
+      "name": "Jeremy Poulter",
+      "email": "jeremy@bigjungle.net",
+      "maintainer": true
+    }
+  ],
+  "version": "0.0.1",
+  "frameworks": "arduino",
+  "platforms": "espressif32,espressif8266",
+  "dependencies": [
+    {
+      "name": "Micro Debug",
+      "version": "~0.0.3"
+    }
+  ]
+}
