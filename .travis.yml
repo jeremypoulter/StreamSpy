@@ -23,9 +23,9 @@ cache:
     - "~/.platformio"
 
 env:
-  - EXAMPLE=$TRAVIS_BUILD_DIR/examples/get_info
+  - EXAMPLE=$TRAVIS_BUILD_DIR/examples/mirror_serial
     ENV=huzzah
-  - EXAMPLE=$TRAVIS_BUILD_DIR/examples/get_info
+  - EXAMPLE=$TRAVIS_BUILD_DIR/examples/mirror_serial
     ENV=esp-wrover-kit
 
 install:
