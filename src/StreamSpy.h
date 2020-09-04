@@ -6,8 +6,12 @@
 
 typedef std::function<void(const uint8_t *buffer, size_t size)> ReadWriteHandler;
 
+class StreamSpyReader;
+
 class StreamSpy : public Stream
 {
+  friend StreamSpyReader;
+
   protected:
     Stream *_stream;
     uint8_t *_buffer;
@@ -21,6 +25,8 @@ class StreamSpy : public Stream
     void onData(bool write, const uint8_t *buffer, size_t size);
   public:
     StreamSpy(Stream &stream);
+    StreamSpy(Stream *stream);
+    StreamSpy();
 
     void begin(size_t buffer_size);
     void end();
@@ -62,6 +68,28 @@ class StreamSpy : public Stream
       _write = write;
     }
     void printBuffer(Print &print);
+};
+
+class StreamSpyReader
+{
+private:
+  StreamSpy *_stream;
+  
+  uint8_t *_head;
+  uint8_t *_tail;
+
+  void writeBuffer(size_t len);
+public:
+  StreamSpyReader();
+  ~StreamSpyReader();
+
+  void attach(StreamSpy &stream);
+  size_t available(void);
+  
+  void printBuffer(Print &print);
+  
+  void getBuffer(uint8_t *&buffer, size_t &len);
+  void readBuffer(size_t len);
 };
 
 #endif // !_STREAMSPY_H
